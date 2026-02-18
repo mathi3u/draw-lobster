@@ -37,7 +37,7 @@ export default function InfoModal({ onClose, onAmnesty, lobsterCount, removedCou
               {removedCount > 0 && ` / ${removedCount} removed`}
             </p>
             <p className="text-xs text-white/30">
-              Inspired by{' '}
+              Made by mathi3u. Inspired by{' '}
               <a href="https://gradient.horse" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/50">gradient.horse</a>
             </p>
           </div>
