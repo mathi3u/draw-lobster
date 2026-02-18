@@ -13,7 +13,7 @@ const LAYER_COLORS: Record<Layer, string> = {
 }
 
 const LAYER_LABELS: Record<Layer, string> = {
-  tail: 'Tail',
+  tail: 'Body & tail',
   leftClaw: 'Left claw',
   rightClaw: 'Right claw',
 }
