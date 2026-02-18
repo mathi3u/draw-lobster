@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import LobsterCanvas from '@/components/LobsterCanvas'
 import DrawModal from '@/components/DrawModal'
 import InfoModal from '@/components/InfoModal'
+import GalleryModal from '@/components/GalleryModal'
 import type { LobsterDrawing, Stroke } from '@/lib/types'
 
 // Irregular shell shapes — 4 variants
@@ -43,6 +44,7 @@ export default function Home() {
   const [allLobsters, setAllLobsters] = useState<LobsterDrawing[]>([])
   const [showDraw, setShowDraw] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
+  const [showGallery, setShowGallery] = useState(false)
   const [newLobsterId, setNewLobsterId] = useState<string | null>(null)
   const [loaded, setLoaded] = useState(false)
 
@@ -109,7 +111,17 @@ export default function Home() {
         Draw me a lobster
       </h1>
 
-      {/* Shell buttons */}
+      {/* Gallery button (bottom-left) */}
+      <div className="fixed bottom-5 left-5 z-10">
+        <ShellButton onClick={() => setShowGallery(true)} label="Gallery">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="16" height="16" rx="2" />
+            <path d="M2 13l4-4 3 3 4-4 5 5" />
+          </svg>
+        </ShellButton>
+      </div>
+
+      {/* Shell buttons (bottom-right) */}
       <div className="fixed bottom-5 right-5 z-10 flex items-end gap-2">
         <ShellButton onClick={() => setShowDraw(true)} label="Draw a lobster">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -135,6 +147,13 @@ export default function Home() {
           onAmnesty={handleAmnesty}
           lobsterCount={activeLobsters.length}
           removedCount={removedCount}
+        />
+      )}
+
+      {showGallery && (
+        <GalleryModal
+          lobsters={allLobsters}
+          onClose={() => setShowGallery(false)}
         />
       )}
     </>
