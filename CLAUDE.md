@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Knowledge Base
+- **Obsidian vault folder**: `~/Documents/Obsidian/KnowledgeBase/`
+- **Project folder**: `Projects/Personal/DrawLobster/`
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
@@ -22,8 +26,8 @@ Ocean floor — deep blue water gradient, light rays from surface, rising bubble
 - **Framework**: Next.js (App Router) with TypeScript
 - **Styling**: Tailwind CSS
 - **Drawing**: Raw HTML Canvas API (no canvas libraries)
-- **Database**: Turso (libSQL cloud SQLite) — use `@libsql/client/web` (NOT `@libsql/client`) for Netlify serverless compatibility
-- **Deployment**: Netlify
+- **Database**: Turso (libSQL cloud SQLite) — use `@libsql/client/web` (NOT `@libsql/client`) for serverless compatibility
+- **Deployment**: Vercel (https://draw-lobster.vercel.app)
 - **Font**: Caveat via Google Fonts CDN
 
 ## Commands
@@ -34,7 +38,7 @@ npm run build        # Production build
 npm run test         # Run tests (Vitest)
 npm run test -- --run src/path/to/file.test.ts  # Single test file
 npm run lint         # ESLint
-npm run build && npx netlify deploy --prod --dir=.next  # Deploy
+npx vercel --prod                                       # Deploy
 ```
 
 ## Architecture
@@ -94,4 +98,4 @@ CREATE TABLE lobsters (
 TURSO_DATABASE_URL=libsql://...
 TURSO_AUTH_TOKEN=<token>
 ```
-Set in `.env.local` (gitignored) and Netlify env vars.
+Set in `.env.local` (gitignored) and Vercel env vars.
